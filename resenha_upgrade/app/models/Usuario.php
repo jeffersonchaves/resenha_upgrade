@@ -2,65 +2,54 @@
 /**
  * Created by PhpStorm.
  * User: JEFFERSON
- * Date: 21/09/2018
- * Time: 08:57
+ * Date: 19/09/2018
+ * Time: 10:48
  */
 
-require '../connection/Connection.php';
+require __DIR__."/../conexao/Connection.php";
 
 class Usuario {
 
-    //ATRIBUTOS
+    //ATRIBUTOS DA CLASSE
     public $id;
     public $nome;
     public $email;
     public $senha;
-    public $tipo; //1 para comum, 2 para admin
+    public $tipoUsuario; //1 para comum e 2 para admin
 
-    private $conexao;
+    public $conexao;
 
     //COMPORTAMENTOS
+    public function __construct(){
+        $this->tipoUsuario = 1;
+        $conexao_objeto = new Connection();
 
-    public function __construct() {
-        $this->tipo = 1;
-        $this->nome = "anonimo";
-        $this->conexao = new Connection();
+        //o atributo $this->conexao agora sabe como se
+        // comunicar com o banco de dados
+        $this->conexao = $conexao_objeto->getConnection();
     }
 
-    public function cadastrar(){
-        $this->conexao->getConnection()->query("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, ?)");
+    public function exibe (){
+        echo "usuario {$this->nome} foi criado com o tipo {$this->tipoUsuario} e id {$this->id} \n";
     }
 
-    public function getUsuario() {
+    public function todos(){
+        return $this->conexao->query("select * from usuarios")->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getUsuarios() {
+    public function getUserById(int $id){
+        $this->conexao->query("select * from usuarios where id = {$id}")->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function editar() {
-    }
 
-    public function excluir(){
-    }
-
-    public function exibe(){
-        echo "o usuario {$this->nome} tem o email {$this->email}";
-    }
 }
 
-$usuario1 = new Usuario();
-$usuario1->nome = "Jefferson Chaves";
-$usuario1->email = "jefferson.email@ifc.edu.br";
-$usuario1->exibe();
-
-echo "<br>";
-$usuario2 = new Usuario();
-$usuario2->nome = "Leonardo Chaves";
-$usuario2->email = "leonardo@gmail.com";
-
-//echo "<pre>";
-//print_r($usuario1);
-//echo "</pre>";
-
-
-
+//$usuario1 = new Usuario();
+//$usuario1->nome = "Jefferson";
+//$usuario1->id = 1;
+//$usuario1->exibe();
+//
+//$usuario2 = new Usuario();
+//$usuario2->nome = "Pedro Roque";
+//$usuario2->id = 2;
+//$usuario2->exibe();
