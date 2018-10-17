@@ -13,11 +13,11 @@
 
 <body>
 
-    <div class="container" style="margin-top: 50px;">
+    <div class="container">
 
         <h1>Cadastro de Usuário</h1>
 
-        <form method="post" action="../controllers/usuario.php?acao=create">
+        <form method="post" action="../controllers/usuario.php?acao=salvar">
 
             <div class="form-group">
                 <label for="name">Nome</label>

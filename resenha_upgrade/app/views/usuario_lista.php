@@ -13,13 +13,11 @@
 
 <body>
 
-    <div class="container" style="margin-top: 50px ">
+    <div class="container">
 
         <h1>Listagem de Usuários</h1>
 
-        <a href="./usuario.php?acao=cadastrar">cadastrar</a>
-        
-
+        <a href="http://localhost/2info3/resenha_jogos/app/controllers/controller/usuario.php?acao=cadastrar">cadastrar</a>
 
         <table class="table">
             <thead>
@@ -27,7 +25,7 @@
                 <th scope="col">#</th>
                 <th scope="col">nome</th>
                 <th scope="col">email</th>
-                <th>ações</th>
+                <th>açoes</th>
             </tr>
             </thead>
             <tbody>
@@ -37,10 +35,7 @@
                     <th scope="row"><?= $usuario['id']; ?></th>
                     <td><?= $usuario['nome']; ?></td>
                     <td><?= $usuario['email']; ?></td>
-                    <td>
-                        <a href="./usuario.php?acao=editar&id=<?= $usuario['id']; ?>">editar</a>
-                        <a href="./usuario.php?acao=delete">excluir</a>
-                    </td>
+                    <td>  </td>
                 </tr>
                 <?php endforeach; ?>
 

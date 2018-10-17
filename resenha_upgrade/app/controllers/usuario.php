@@ -14,7 +14,7 @@
         require __DIR__."/../views/usuario_cadastro.php";
     }
 
-    function create(){
+    function salvar(){
 
         $nome  = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
         $email = $_POST['email'];
@@ -23,20 +23,15 @@
         $user = new Usuario();
         $user->salvar($nome, $email, $senha);
 
-        /*chama a funcao para listar os cadastros*/
-        index(); 
+        index();
     }
 
-    function editar(){
 
-        $user = new Usuario();
-        $user = $user->getUserById($_GET['id']);
+    function editar(){
         require __DIR__."/../views/usuario_editar.php";
     }
 
-    function update(){
-
-
+    function atualizar(){
 
         $id    = $_POST['id'];
         $nome  = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -44,16 +39,11 @@
         $senha = $_POST['senha'];
 
         $user = new Usuario();
-        $user->update($id, $nome, $email, $senha);
+        $user->salvar($nome, $email, $senha);
 
         index();
+
     }
-
-    function delete(){
-        echo "faça o algoritmo para deletar";
-    }
-
-
 
 
     if (isset($_GET['acao']) and function_exists($_GET['acao']) ){
