@@ -1,5 +1,5 @@
 <?php
 
-    require 'app/controllers/home.php';
+    require 'app/controllers/usuario.php';
 
 

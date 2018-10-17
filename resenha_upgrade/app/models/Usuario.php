@@ -41,6 +41,15 @@ class Usuario {
         $this->conexao->query("select * from usuarios where id = {$id}")->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function salvar($nome, $email, $senha){
+
+        $sql = "insert into usuarios(nome, email, senha) values ('$nome', '$email', '$senha')";
+        $resultado = $this->conexao->exec($sql);
+
+        return $resultado;
+
+    }
+
 
 }
 

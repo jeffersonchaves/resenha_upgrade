@@ -15,7 +15,9 @@
 
     <div class="container">
 
-        <h1><?php echo $teste1; ?></h1>
+        <h1>Listagem de Usuários</h1>
+
+        <a href="http://localhost/2info3/resenha_jogos/app/controllers/controller/usuario.php?acao=cadastrar">cadastrar</a>
 
         <table class="table">
             <thead>
