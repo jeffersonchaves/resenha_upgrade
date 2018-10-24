@@ -28,6 +28,10 @@
 
 
     function editar(){
+
+        $user = new Usuario();
+        $dados_user = $user->getUserById($_GET['id']);
+
         require __DIR__."/../views/usuario_editar.php";
     }
 
@@ -39,10 +43,16 @@
         $senha = $_POST['senha'];
 
         $user = new Usuario();
-        $user->salvar($nome, $email, $senha);
+        $user->update($id, $nome, $email, $senha);
 
         index();
+    }
 
+    function excluir(){
+        $user = new Usuario();
+        $user->delete($_GET['id']);
+
+        index();
     }
 
 

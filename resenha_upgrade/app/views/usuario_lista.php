@@ -13,13 +13,13 @@
 
 <body>
 
-    <div class="container">
+    <div class="container" style="margin-top: 35px;">
 
         <h1>Listagem de Usuários</h1>
 
-        <a href="http://localhost/2info3/resenha_jogos/app/controllers/controller/usuario.php?acao=cadastrar">cadastrar</a>
+        <a class="btn btn-primary" href="/2info3/resenha_upgrade_2info3/resenha_upgrade/app/controllers/usuario.php?acao=cadastrar">cadastrar</a>
 
-        <table class="table">
+        <table class="table" style="margin-top: 25px">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -32,10 +32,13 @@
 
                 <?php foreach ($listaUsuarios as $usuario): ?>
                 <tr>
-                    <th scope="row"><?= $usuario['id']; ?></th>
-                    <td><?= $usuario['nome']; ?></td>
-                    <td><?= $usuario['email']; ?></td>
-                    <td>  </td>
+                    <th scope="row"><?= $usuario['id'] ?></th>
+                    <td><?= $usuario['nome'] ?></td>
+                    <td><?= $usuario['email'] ?></td>
+                    <td>
+                        <a href="http://localhost/2info3/resenha_upgrade_2info3/resenha_upgrade/app/controllers/usuario.php?acao=editar&id=<?= $usuario['id'] ?>">editar</a>
+                        <a href="http://localhost/2info3/resenha_upgrade_2info3/resenha_upgrade/app/controllers/usuario.php?acao=excluir&id=<?= $usuario['id'] ?>">excluir</a>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
 

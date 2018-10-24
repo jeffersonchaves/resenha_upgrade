@@ -23,18 +23,18 @@
 
             <div class="form-group">
                 <label for="name">Nome</label>
-                <input name="nome" type="text" class="form-control" id="name"  placeholder="digite seu nome">
+                <input value="<?= $dados_user['nome'] ?>" name="nome" type="text" class="form-control" id="name"  placeholder="digite seu nome">
             </div>
 
 
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input name="email" type="email" class="form-control" id="email"  placeholder="digite seu email">
+                <input value="<?= $dados_user['email'] ?>" name="email" type="email" class="form-control" id="email"  placeholder="digite seu email">
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input name="senha" type="password" class="form-control" id="password" placeholder="digite sua senha">
+                <input value="<?= $dados_user['senha'] ?>" name="senha" type="password" class="form-control" id="password" placeholder="digite sua senha">
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

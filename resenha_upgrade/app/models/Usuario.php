@@ -38,7 +38,9 @@ class Usuario {
     }
 
     public function getUserById(int $id){
-        $this->conexao->query("select * from usuarios where id = {$id}")->fetch(PDO::FETCH_ASSOC);
+        $user = $this->conexao->query("select * from usuarios where id = {$id}")->fetch(PDO::FETCH_ASSOC);
+
+        return $user;
     }
 
     public function salvar($nome, $email, $senha){
@@ -47,30 +49,18 @@ class Usuario {
         $resultado = $this->conexao->exec($sql);
 
         return $resultado;
-
     }
 
     public function update($id, $nome, $email, $senha){
 
-        $sql = "update usuarios set nome='$nome', email='$email', senha='$senha' WHERE id={$id}";
-
+        $sql = "update usuarios set nome='$nome', email='$email', senha='$senha' WHERE id=$id";
         $resultado = $this->conexao->exec($sql);
 
         return $resultado;
     }
 
+    public function delete($id){
+        $sql = "delete from usuarios where id=$id";
+        $this->conexao->exec($sql);
+    }
 }
-
-//$usuario1 = new Usuario();
-//$usuario1->nome = "Jefferson";
-//$usuario1->id = 1;
-//$usuario1->exibe();
-//
-//$usuario2 = new Usuario();
-//$usuario2->nome = "Pedro Roque";
-//$usuario2->id = 2;
-//$usuario2->exibe();
-
-$usuario = new Usuario();
-
-$usuario->update(1, "Rambo", "rambo@stallone.com", "123");
