@@ -34,7 +34,7 @@ class Usuario {
     }
 
     public function todos(){
-        return $this->conexao->query("select * from usuarios")->fetchAll(PDO::FETCH_ASSOC);
+        return $this->conexao->query("select * from usuarios")->fetchAll(PDO::FETCH_CLASS, 'Usuario');
     }
 
     public function getUserById(int $id){
